@@ -2,7 +2,7 @@ FROM node:24-slim
 
 # 1. Install system dependencies (as root)
 RUN apt-get update && apt-get install -y \
-  tmux curl git python3 python3-pip sudo \
+  tmux curl git git-lfs python3 python3-pip sudo \
   && rm -rf /var/lib/apt/lists/*
 
 # 2. Install 'uv' for uvx (as root)
@@ -21,5 +21,8 @@ WORKDIR /workspaces/project
 # 6. Pre-configure MCP servers in the node user's home
 RUN mkdir -p /home/node/.claude
 COPY --chown=node:node claude.json /home/node/.claude.json
+
+# 7. Initialize git-lfs for the node user
+RUN git lfs install
 
 CMD ["bash"]

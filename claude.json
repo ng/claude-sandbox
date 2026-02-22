@@ -16,6 +16,10 @@
       "command": "npx",
       "args": ["-y", "@mui/mcp@latest"],
       "type": "stdio"
+    },
+    "neon": {
+      "url": "https://mcp.neon.tech/mcp",
+      "type": "http"
     }
   }
 }
