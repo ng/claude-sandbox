@@ -1,0 +1,15 @@
+services:
+  claude:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: claude-sandbox
+    container_name: claude-sandbox
+    volumes:
+      - ${PROJECT_DIR:-.}:/workspaces/project
+    env_file:
+      - .env
+    # Interactive flags
+    stdin_open: true
+    tty: true
+    entrypoint: [ "claude", "--dangerously-skip-permissions" ]
